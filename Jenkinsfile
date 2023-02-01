@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git 'https://github.com/Y-Deekshith/counter_app.git'
+                git credentialsId: 'github_auth', url: 'git@github.com:Y-Deekshith/counter_app.git'
             }
         }
         stage('Unit test') {
