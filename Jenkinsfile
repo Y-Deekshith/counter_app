@@ -33,5 +33,13 @@ pipeline {
                 }
             }
         }
+        stage('Quality check') {
+            steps {
+                script {
+                        waitForQualityGate abortPipeline: false, credentialsId: 'sonarcube-auth'
+                    }
+                }
+            }
+        }
     }
 }
