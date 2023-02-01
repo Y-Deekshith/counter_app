@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent PROD
     tools {
         maven 'Maven3'
     }
