@@ -1,5 +1,5 @@
 pipeline {
-    agent PROD
+    agent { label 'PROD' }
     tools {
         maven 'Maven3'
     }
