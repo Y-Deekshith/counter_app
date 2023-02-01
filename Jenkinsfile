@@ -9,8 +9,6 @@ pipeline {
                 git 'https://github.com/Y-Deekshith/counter_app.git'
             }
         }
-    }
-    stages {
         stage('Unit test') {
             steps {
                 sh 'mvn test'
