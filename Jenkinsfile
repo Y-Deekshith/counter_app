@@ -22,7 +22,7 @@ pipeline {
         stage('Maven Build stage') {
             steps {
                 sh 'mvn clean install'
-                sh 'mv target/Uber.jar target/Uber-${BUILD_NUMBER}.jar' 
+                // sh 'mv target/springboot-1.0.0.jar target/Uber-${BUILD_NUMBER}.jar' 
             }
         }
         // stage('static code analysis') {
@@ -48,7 +48,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [
                         [artifactId: 'springboot',
                          classifier: '',
-                          file: 'target/Uber-${BUILD_NUMBER}.jar',
+                          file: 'target/springboot-1.0.0.jar',
                            type: 'jar'
                            ]
                            ],
@@ -58,7 +58,7 @@ pipeline {
                                nexusVersion: 'nexus3',
                                 protocol: 'http',
                                  repository: 'http://ec2-34-202-235-119.compute-1.amazonaws.com:8081/repository/maven-snapshots/',
-                                  version: '1.0-SNAPSHOT'
+                                  version: '1.0'
                 }
             }
         }
