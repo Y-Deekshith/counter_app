@@ -9,38 +9,38 @@ pipeline {
                 git 'https://github.com/Y-Deekshith/counter_app.git'
             }
         }
-        // stage('Unit test') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        // }
-        // stage('Integration test') {
-        //     steps {
-        //         sh 'mvn verify -DskipUnitTests'
-        //     }
-        // }
+        stage('Unit test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Integration test') {
+            steps {
+                sh 'mvn verify -DskipUnitTests'
+            }
+        }
         stage('Maven Build stage') {
             steps {
                 sh 'mvn clean install'
-                sh 'mv target/springboot-1.0.0.jar target/springboot-${BUILD_NUMBER}.jar' 
+                // sh 'mv target/springboot-1.0.0.jar target/springboot-${BUILD_NUMBER}.jar' 
             }
         }
-        // stage('static code analysis') {
-        //     steps {
-        //         script {
-        //             withSonarQubeEnv(credentialsId: 'sonarqube') {
-        //                 sh 'mvn clean package sonar:sonar'
-        //             }
-        //         }
-        //     }
-        // }
-        // stage('Quality check') {
-        //     steps {
-        //         script {
-        //                 waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube'
-        //         }
-        //     }
-        // }
+        stage('static code analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv(credentialsId: 'sonarqube') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                }
+            }
+        }
+        stage('Quality check') {
+            steps {
+                script {
+                        waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube'
+                }
+            }
+        }
         stage('Uplode artifact') {
             steps {
                 script {
@@ -48,7 +48,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [
                         [artifactId: 'springboot',
                          classifier: '',
-                          file: 'target/springboot-${BUILD_NUMBER}.jar',
+                          file: 'target/Uber.jar',
                            type: 'jar'
                            ]
                            ],
