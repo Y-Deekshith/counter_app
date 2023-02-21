@@ -22,7 +22,7 @@ pipeline {
         stage('Maven Build stage') {
             steps {
                 sh 'mvn clean install'
-                // sh 'mv target/springboot-1.0.0.jar target/Uber-${BUILD_NUMBER}.jar' 
+                sh 'mv target/springboot-1.0.0.jar target/springboot-${BUILD_NUMBER}.jar' 
             }
         }
         // stage('static code analysis') {
@@ -48,7 +48,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [
                         [artifactId: 'springboot',
                          classifier: '',
-                          file: 'target/springboot-1.0.0.jar',
+                          file: 'target/springboot-${BUILD_NUMBER}.jar',
                            type: 'jar'
                            ]
                            ],
