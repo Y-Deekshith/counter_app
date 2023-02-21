@@ -54,11 +54,11 @@ pipeline {
                            ],
                             credentialsId: 'nexus-auth',
                              groupId: 'com.example',
-                              nexusUrl: 'ec2-34-202-235-119.compute-1.amazonaws.com:8081',
+                              nexusUrl: 'ec2-34-202-235-119.compute-1.amazonaws.com:8081/',
                                nexusVersion: 'nexus3',
                                 protocol: 'http',
                                  repository: 'http://ec2-34-202-235-119.compute-1.amazonaws.com:8081/repository/maven-snapshots/',
-                                  version: '1.0'
+                                  version: '1.0.0'
                 }
             }
         }
