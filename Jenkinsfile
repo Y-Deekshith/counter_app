@@ -57,8 +57,8 @@ pipeline {
                               nexusUrl: 'ec2-34-202-235-119.compute-1.amazonaws.com:8081',
                                nexusVersion: 'nexus3',
                                 protocol: 'http',
-                                 repository: 'maven-releases',
-                                  version: '1.0.0'
+                                 repository: 'maven-snapshots',
+                                  version: '1.0.0-SNAPSHOT'
                 }
             }
         }
